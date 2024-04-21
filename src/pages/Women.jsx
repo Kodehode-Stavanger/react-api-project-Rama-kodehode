@@ -24,8 +24,8 @@ export default function Woman() {
         <div key={woman.id} className="product">
           <img src={woman?.image} alt={woman.title} />
           <h3>{woman?.title}</h3>
-          <p>Price: ${woman?.price}</p>
           <p>Rating: {woman?.rating.rate}</p>
+          <p>Price: ${woman?.price}</p>
         </div>
       ))}
     </div>

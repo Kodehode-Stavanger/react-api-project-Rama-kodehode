@@ -23,7 +23,7 @@ export default function Men() {
       <h1>MEN'S CLOTHING</h1>
       {data.map((men) => (
         <div key={men.id} className="product">
-          <img src={men?.image} alt={men.title} width={100} height={100} />
+          <img src={men?.image} alt={men.title} />
           <h3>{men?.title}</h3>
           <p>Price: ${men?.price}</p>
           <p>Rating: {men?.rating.rate}</p>

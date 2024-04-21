@@ -1,10 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Homepage from "./HomePage";
 import ErrorPage from "./pages/ErrorPage";
-import DetailsPage from "./pages/DetailsPage";
-import NavigationBar from "./pages/NavigationBar";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Electronics from "./pages/Electronics";
 import Jewelery from "./pages/Jewelry";
 import Men from "./pages/Men";
@@ -36,13 +34,8 @@ const router = createBrowserRouter([
   },
 
   {
-    path: "/navigation",
-    element: <NavigationBar />,
-  },
-
-  {
-    path: "/gallery",
-    element: <DetailsPage />,
+    path: "/error404",
+    element: <ErrorPage />,
   },
 ]);
 
