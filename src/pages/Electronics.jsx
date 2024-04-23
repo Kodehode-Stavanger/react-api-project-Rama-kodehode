@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Loading from "./Loading";
 
-export default function Electronics() {
+export default function Woman() {
   const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -11,15 +13,18 @@ export default function Electronics() {
           "https://fakestoreapi.com/products/category/electronics"
         );
         setData(result.data);
+        setIsLoading(false);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error("Error", error);
+        setIsLoading(false);
       }
     };
-
     fetchData();
-  }, []);
+  });
 
-  console.log(data);
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <div>

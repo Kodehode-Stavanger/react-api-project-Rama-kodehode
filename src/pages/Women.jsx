@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./Categories.css";
+import Loading from "./Loading";
 
 export default function Woman() {
   const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -11,12 +14,18 @@ export default function Woman() {
           "https://fakestoreapi.com/products/category/women's clothing"
         );
         setData(result.data);
+        setIsLoading(false);
       } catch (error) {
         console.error("Error", error);
+        setIsLoading(false);
       }
     };
     fetchData();
   });
+
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div>
       <h1>WOMAN`S CLOTHING</h1>

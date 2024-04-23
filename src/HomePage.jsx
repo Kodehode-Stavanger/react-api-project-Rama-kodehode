@@ -2,18 +2,23 @@ import { NavLink, Outlet, useLocation } from "react-router-dom";
 import "./index.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Loading from "./pages/Loading";
 
 export default function Homepage() {
   const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       try {
         const result = await axios.get("https://fakestoreapi.com/products/");
         setData(result.data);
       } catch (error) {
         console.error("Error fetching data:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -39,7 +44,9 @@ export default function Homepage() {
       </NavLink>
       <Outlet />
 
-      {location.pathname === "/" && data.length > 0 && (
+      {isLoading && <Loading />}
+
+      {location.pathname === "/" && !isLoading && data.length > 0 && (
         <div className="products">
           {data.map((e) => (
             <div key={e.id} className="product">

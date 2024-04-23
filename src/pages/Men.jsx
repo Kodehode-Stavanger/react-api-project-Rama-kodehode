@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Loading from "./Loading";
 
 export default function Men() {
   const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -11,12 +13,19 @@ export default function Men() {
           "https://fakestoreapi.com/products/category/men's clothing"
         );
         setData(result.data);
+        setIsLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchData();
   }, []);
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <div>

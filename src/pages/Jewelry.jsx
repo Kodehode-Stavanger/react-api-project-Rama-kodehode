@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Loading from "./Loading";
 
-export default function Jewelery() {
+export default function Woman() {
   const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -11,13 +13,18 @@ export default function Jewelery() {
           "https://fakestoreapi.com/products/category/jewelery"
         );
         setData(result.data);
+        setIsLoading(false);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error("Error", error);
+        setIsLoading(false);
       }
     };
-
     fetchData();
-  }, []);
+  });
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <div>
