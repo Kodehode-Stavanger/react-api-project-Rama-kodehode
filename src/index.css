@@ -1,0 +1,19 @@
+* {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: aliceblue;
+}
+
+/* .home {
+  display: flex;
+
+} */
+
+.categories {
+  margin: 20px;
+}
