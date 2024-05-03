@@ -15,9 +15,7 @@ div {
 }
 
 .product {
-  /* border: black solid; */
   display: grid;
-  /* width: 30vh; */
   grid-template-columns: 30vh auto;
   grid-template-rows: repeat(4, auto);
   gap: 5px;

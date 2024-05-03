@@ -1,41 +1,24 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import Categories from "./Pages/Categories.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Homepage from "./HomePage";
-import ErrorPage from "./pages/ErrorPage";
-import Electronics from "./pages/Electronics";
-import Jewelery from "./pages/Jewelry";
-import Men from "./pages/Men";
-import Women from "./pages/Women";
+import HomePage from "./Pages/HomePage.jsx";
+import Navbar from "./Pages/NavBar.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Homepage />,
-    errorElement: <ErrorPage />,
+    element: <Navbar />,
     children: [
       {
-        path: "/electronics",
-        element: <Electronics />,
+        path: "/",
+        element: <HomePage />,
       },
       {
-        path: "/jewelery",
-        element: <Jewelery />,
-      },
-      {
-        path: "/men",
-        element: <Men />,
-      },
-      {
-        path: "/women",
-        element: <Women />,
+        path: "/category/:categoryName",
+        element: <Categories />,
       },
     ],
-  },
-
-  {
-    path: "/error404",
-    element: <ErrorPage />,
   },
 ]);
 
